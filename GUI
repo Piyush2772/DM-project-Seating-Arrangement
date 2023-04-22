@@ -1,0 +1,95 @@
+ private final JLabel titleLabel = new JLabel("Classroom Seating");
+    private final JLabel studentCountLabel = new JLabel("Number of Students: ");
+    private final JTextField studentCountTextField = new JTextField();
+    private final JTextArea seatingTextArea = new JTextArea();
+    private final JButton generateSeatingButton = new JButton("Generate Seating");
+    
+
+
+    public ClassroomSeatingGUI() {
+        setLayout(new BorderLayout());
+
+        // Setting image to frame
+        ImageIcon image = new ImageIcon("D:\\JAVA\\DM project\\ADYPULogo.png");
+        this.setIconImage(image.getImage());
+
+        // Set custom colors for Swing components
+        Color primaryColor = new Color(243,239,224); // Blue
+        Color secondaryColor = new Color(34,34,34); //
+        Color textColor = new Color(0, 0, 0); // Black
+        Color buttonColor = new Color(243,239,224); // Light green
+        Color inputBox = new Color(34,163,159);
+        Color outputBox = new Color(67,66,66);
+
+        // Set custom font for title label
+        Font titleFont = new Font("Helvetica", Font.BOLD, 50);
+        titleLabel.setFont(titleFont);
+        titleLabel.setForeground(primaryColor);
+
+        // Set custom font for student count label
+        Font labelFont = new Font("Helvetica", Font.BOLD, 40);
+        studentCountLabel.setFont(labelFont);
+        studentCountLabel.setForeground(primaryColor);
+
+        // Set custom font and color for student count text field
+        Font textFieldFont = new Font("Helvetica", Font.PLAIN, 35);
+        studentCountTextField.setPreferredSize(new Dimension(100, 30));
+        studentCountTextField.setFont(textFieldFont);
+        studentCountTextField.setForeground(textColor); // input text color
+        studentCountTextField.setBackground(inputBox); // input box color
+
+
+        // Set custom color for generate seating button
+        Font buttonFont = new Font("Helvetica", Font.BOLD, 26);
+        generateSeatingButton.setFont(buttonFont);
+        generateSeatingButton.setForeground(textColor);
+        generateSeatingButton.setBackground(buttonColor);
+        
+        generateSeatingButton.addActionListener(this);
+
+        // Set custom font and color for seating text area
+        Font textAreaFont = new Font("Helvetica", Font.PLAIN, 25); //output size
+        seatingTextArea.setEditable(true);
+        seatingTextArea.setLineWrap(true);
+        seatingTextArea.setFont(textAreaFont);
+        seatingTextArea.setForeground(buttonColor);// output text color
+        seatingTextArea.setBackground(outputBox);// output background color
+
+
+        JScrollPane scrollPane = new JScrollPane(seatingTextArea);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setPreferredSize(new Dimension(800, 300));
+        scrollPane.setBackground(secondaryColor);
+
+        //Class room seating layout
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        topPanel.setBackground(secondaryColor); // background of headline
+        topPanel.add(titleLabel);
+        
+
+
+        // background of Number of students
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new GridLayout(2, 4));
+        centerPanel.setBackground(secondaryColor);
+        centerPanel.add(studentCountLabel);
+        centerPanel.add(studentCountTextField);
+
+        // background of generating button
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        bottomPanel.setBackground(secondaryColor);
+        bottomPanel.add(generateSeatingButton);
+
+        add(topPanel, BorderLayout.NORTH);
+        add(centerPanel, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.SOUTH);
+        add(scrollPane, BorderLayout.EAST);
+
+        setTitle("Classroom Seating");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
